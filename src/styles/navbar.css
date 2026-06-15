@@ -1,0 +1,381 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+.navbar{
+width:100%;
+height:95px;
+background:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 40px;
+position:relative;
+}
+
+/* LOGO */
+
+.navbar-logo{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.navbar-logo img{
+width:48px;
+}
+
+.navbar-logo h2{
+font-size:18px;
+font-weight:900;
+}
+
+/* NAV LINKS */
+
+.nav-links{
+display:flex;
+align-items:center;
+gap:42px;
+list-style:none;
+}
+
+.nav-links li{
+font-size:17px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.nav-links li:hover
+
+/* ICONS */
+
+.nav-icons{
+display:flex;
+align-items:center;
+gap:30px;
+}
+
+.nav-icons svg{
+font-size:28px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.nav-icons svg:hover{
+transform:scale(1.1);
+}
+
+/* MENU ICON */
+
+.menu-icon{
+display:none;
+font-size:34px;
+cursor:pointer;
+}
+
+/* ======================
+MOBILE
+====================== */
+
+@media(max-width:768px){
+
+.navbar{
+padding:20px;
+height:auto;
+flex-wrap:wrap;
+}
+
+/* SHOW MENU BUTTON */
+
+.menu-icon{
+display:block;
+}
+
+/* HIDE MENU */
+
+.nav-links{
+position:absolute;
+top:95px;
+left:0;
+width:100%;
+background:white;
+flex-direction:column;
+align-items:center;
+gap:25px;
+padding:30px 0;
+display:none;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* SHOW MENU */
+
+.nav-links.active{
+display:flex;
+}
+
+.nav-links li{
+font-size:18px;
+}
+
+.nav-icons{
+gap:18px;
+}
+
+.nav-icons svg{
+font-size:24px;
+}
+
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow-x:hidden;
+font-family:serif;
+}
+
+/* NAVBAR */
+
+.navbar{
+width:100%;
+height:95px;
+background:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 40px;
+position:relative;
+z-index:1000;
+}
+
+/* LOGO */
+
+.navbar-logo{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.navbar-logo img{
+width:48px;
+object-fit:contain;
+}
+
+.navbar-logo h2{
+font-size:18px;
+font-weight:900;
+color:black;
+margin-top:2px;
+}
+
+/* LINKS */
+
+.nav-links{
+display:flex;
+align-items:center;
+gap:40px;
+list-style:none;
+}
+
+.nav-links li{
+font-size:17px;
+color:#111;
+cursor:pointer;
+transition:0.3s;
+white-space:nowrap;
+}
+
+.nav-links li:hover{
+color:#777;
+}
+
+/* RIGHT SECTION */
+
+.right-section{
+display:flex;
+align-items:center;
+gap:25px;
+}
+
+/* ICONS */
+
+.nav-icons{
+display:flex;
+align-items:center;
+gap:28px;
+}
+
+.nav-icons svg{
+font-size:28px;
+color:#111;
+cursor:pointer;
+transition:0.3s;
+stroke-width:1.8;
+}
+
+.nav-icons svg:hover{
+transform:scale(1.1);
+}
+
+/* USER */
+
+.user-icon{
+cursor:pointer;
+}
+
+/* MENU ICON */
+
+.menu-icon{
+display:none;
+cursor:pointer;
+width:45px;
+height:45px;
+border-radius:12px;
+background:white;
+justify-content:center;
+align-items:center;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.menu-icon svg{
+font-size:30px;
+color:#111;
+}
+
+.menu-icon:hover{
+transform:scale(1.05);
+background:#fafafa;
+}
+
+/* =========================
+TABLET
+========================= */
+
+@media(max-width:1100px){
+
+.navbar{
+padding:0 20px;
+}
+
+.nav-links{
+gap:22px;
+}
+
+.nav-links li{
+font-size:15px;
+}
+
+.nav-icons{
+gap:18px;
+}
+
+.nav-icons svg{
+font-size:24px;
+}
+
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.navbar{
+height:90px;
+padding:0 20px;
+}
+
+/* HIDE DESKTOP MENU */
+
+.nav-links{
+position:absolute;
+top:90px;
+left:0;
+width:100%;
+background:white;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:28px;
+padding:35px 0;
+display:none;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* SHOW MENU */
+
+.nav-links.active{
+display:flex;
+}
+
+.nav-links li{
+font-size:20px;
+}
+
+/* SHOW MENU BUTTON */
+
+.menu-icon{
+display:flex;
+}
+
+/* ICON SIZE */
+
+.nav-icons{
+gap:18px;
+}
+
+.nav-icons svg{
+font-size:24px;
+}
+
+}
+
+/* =========================
+SMALL MOBILE
+========================= */
+
+@media(max-width:480px){
+
+.navbar{
+padding:0 15px;
+}
+
+.navbar-logo img{
+width:42px;
+}
+
+.navbar-logo h2{
+font-size:16px;
+}
+
+.nav-icons{
+gap:14px;
+}
+
+.nav-icons svg{
+font-size:22px;
+}
+
+.menu-icon{
+width:42px;
+height:42px;
+}
+
+.menu-icon svg{
+font-size:26px;
+}
+
+.nav-links li{
+font-size:18px;
+}
+
+}
