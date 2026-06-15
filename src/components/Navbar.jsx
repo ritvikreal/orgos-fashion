@@ -27,9 +27,6 @@ return (
   <div className="navbar-logo">
 
     <img src={logo} alt="" />
-
-    <h2>ORGOS</h2>
-
   </div>
 
   {/* MENU BUTTON */}
