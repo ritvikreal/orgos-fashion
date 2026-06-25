@@ -2,15 +2,10 @@ import "../styles/account.css";
 
 import loginBanner from "../assets/images/login-banner.png";
 
-<<<<<<< HEAD
 import { useState } from "react";
-=======
->>>>>>> f739f31dc7b0aa863c50e62adea9015586f64937
 import { useNavigate } from "react-router-dom";
 
 function Account() {
-
-<<<<<<< HEAD
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -18,7 +13,6 @@ function Account() {
   const [checked, setChecked] = useState(false);
 
   const handleContinue = () => {
-
     if (name.trim() === "") {
       alert("Please Enter Your Name");
       return;
@@ -41,11 +35,8 @@ function Account() {
   };
 
   return (
-
     <div className="account-page">
-
       <div className="login-box">
-
         <img
           src={loginBanner}
           alt=""
@@ -53,37 +44,27 @@ function Account() {
         />
 
         <div className="login-content">
-
-          <h2>
-            Login or Sign Up
-          </h2>
+          <h2>Login or Sign Up</h2>
 
           <input
             type="text"
             placeholder="Enter Your Name"
             value={name}
-            onChange={(e) =>
-              setName(e.target.value)
-            }
+            onChange={(e) => setName(e.target.value)}
           />
 
           <input
             type="text"
             placeholder="Enter Mobile Number"
             value={mobile}
-            onChange={(e) =>
-              setMobile(e.target.value)
-            }
+            onChange={(e) => setMobile(e.target.value)}
           />
 
           <div className="checkbox-area">
-
             <input
               type="checkbox"
               checked={checked}
-              onChange={(e) =>
-                setChecked(e.target.checked)
-              }
+              onChange={(e) => setChecked(e.target.checked)}
             />
 
             <p>
@@ -92,81 +73,15 @@ function Account() {
               &
               <span> Privacy Policy </span>
             </p>
-
           </div>
 
           <button onClick={handleContinue}>
             CONTINUE
           </button>
-
         </div>
-
       </div>
-
     </div>
-
   );
 }
 
 export default Account;
-=======
-const navigate = useNavigate();
-
-return (
-
-<div className="account-page">
-
-  <div className="login-box">
-
-    {/* TOP IMAGE */}
-
-    <img
-      src={loginBanner}
-      alt=""
-      className="login-banner"
-    />
-
-    {/* FORM */}
-
-    <div className="login-content">
-
-      <h2>
-        Login or Sign up
-      </h2>
-
-      <input
-        type="text"
-        placeholder="+91 | Mobile Number"
-      />
-
-      <div className="checkbox-area">
-
-        <input type="checkbox" />
-
-        <p>
-          By continuing ,I agree to the
-          <span> Terms of Use </span>
-          &
-          <span> Privacy Policy </span>
-          and I am above !* years old
-        </p>
-
-      </div>
-
-      <button
-        onClick={() => navigate("/otp")}
-      >
-        CONTINUE
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-);
-}
-
-export default Account;
->>>>>>> f739f31dc7b0aa863c50e62adea9015586f64937
