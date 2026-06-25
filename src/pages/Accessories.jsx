@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -9,202 +9,209 @@ import accessoriesProducts from "../data/accessoriesProducts";
 
 import hero from "../assets/images/accessories/hero.jpg";
 
+import { CartContext } from "../context/CartContext";
+
 function Accessories() {
 
-const [category,setCategory]
-= useState("all");
+  const [category, setCategory] =
+    useState("all");
 
-let products=[];
+  const { addToCart } =
+    useContext(CartContext);
 
-if(category==="all"){
-products=Object.values(accessoriesProducts).flat();
-}
-else{
-products=accessoriesProducts[category];
-}
+  let products = [];
 
-return(
+  if (category === "all") {
 
-<>
-<Navbar/>
+    products =
+      Object.values(accessoriesProducts).flat();
 
-<section className="accessories-hero">
+  }
 
-<img
-src={hero}
-alt=""
-className="hero-banner"
-/>
+  else {
 
-</section>
+    products =
+      accessoriesProducts[category] || [];
 
-<section className="accessories-categories">
+  }
 
-<div
-className={
-category==="all"
-?
-"acc-cat active"
-:
-"acc-cat"
-}
-onClick={()=>setCategory("all")}
->
-All Accessories
-</div>
+  return (
 
-<div
-className={
-category==="bags"
-?
-"acc-cat active"
-:
-"acc-cat"
-}
-onClick={()=>setCategory("bags")}
->
-Bags
-</div>
+    <>
 
-<div
-className={
-category==="watches"
-?
-"acc-cat active"
-:
-"acc-cat"
-}
-onClick={()=>setCategory("watches")}
->
-Watches
-</div>
+      <Navbar />
 
-<div
-className={
-category==="sunglasses"
-?
-"acc-cat active"
-:
-"acc-cat"
-}
-onClick={()=>setCategory("sunglasses")}
->
-Sunglasses
-</div>
+      {/* HERO */}
 
-<div
-className={
-category==="jewellery"
-?
-"acc-cat active"
-:
-"acc-cat"
-}
-onClick={()=>setCategory("jewellery")}
->
-Jewellery
-</div>
+      <section className="accessories-hero">
 
-<div
-className={
-category==="wallets"
-?
-"acc-cat active"
-:
-"acc-cat"
-}
-onClick={()=>setCategory("wallets")}
->
-Wallets
-</div>
+        <img
+          src={hero}
+          alt=""
+          className="hero-banner"
+        />
 
-<div
-className={
-category==="caps"
-?
-"acc-cat active"
-:
-"acc-cat"
-}
-onClick={()=>setCategory("caps")}
->
-Caps
-</div>
+      </section>
 
-<div
-className={
-category==="perfumes"
-?
-"acc-cat active"
-:
-"acc-cat"
-}
-onClick={()=>setCategory("perfumes")}
->
-Perfumes
-</div>
+      {/* CATEGORY */}
 
-</section>
+      <section className="accessories-categories">
 
-<section className="accessories-products">
+        <div
+          className={
+            category === "all"
+              ? "acc-cat active"
+              : "acc-cat"
+          }
+          onClick={() => setCategory("all")}
+        >
+          All Accessories
+        </div>
 
-<div className="products-grid">
+        <div
+          className={
+            category === "bags"
+              ? "acc-cat active"
+              : "acc-cat"
+          }
+          onClick={() => setCategory("bags")}
+        >
+          Bags
+        </div>
 
-{
-products.map((item)=>(
+        <div
+          className={
+            category === "watches"
+              ? "acc-cat active"
+              : "acc-cat"
+          }
+          onClick={() => setCategory("watches")}
+        >
+          Watches
+        </div>
 
-<div
-className="product-card"
-key={item.id}
->
+        <div
+          className={
+            category === "sunglasses"
+              ? "acc-cat active"
+              : "acc-cat"
+          }
+          onClick={() => setCategory("sunglasses")}
+        >
+          Sunglasses
+        </div>
 
-<img
-src={item.image}
-alt=""
-/>
+        <div
+          className={
+            category === "jewellery"
+              ? "acc-cat active"
+              : "acc-cat"
+          }
+          onClick={() => setCategory("jewellery")}
+        >
+          Jewellery
+        </div>
 
-<h3>
-{item.name}
-</h3>
+        <div
+          className={
+            category === "wallets"
+              ? "acc-cat active"
+              : "acc-cat"
+          }
+          onClick={() => setCategory("wallets")}
+        >
+          Wallets
+        </div>
 
-<p>
-{item.brand}
-</p>
+        <div
+          className={
+            category === "caps"
+              ? "acc-cat active"
+              : "acc-cat"
+          }
+          onClick={() => setCategory("caps")}
+        >
+          Caps
+        </div>
 
-<div className="price-row">
+        <div
+          className={
+            category === "perfumes"
+              ? "acc-cat active"
+              : "acc-cat"
+          }
+          onClick={() => setCategory("perfumes")}
+        >
+          Perfumes
+        </div>
 
-<span className="new-price">
-₹{item.price}
-</span>
+      </section>
 
-<del>
-₹{item.oldPrice}
-</del>
+      {/* PRODUCTS */}
 
-<span className="discount">
--{item.discount}%
-</span>
+      <section className="accessories-products">
 
-</div>
+        <div className="products-grid">
 
-<button>
-Add To Cart
-</button>
+          {
 
-</div>
+            products.map((item) => (
 
-))
-}
+              <div
+                className="product-card"
+                key={item.id}
+              >
 
-</div>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                />
 
-</section>
+                <h3>
+                  {item.name}
+                </h3>
 
-<Footer/>
+                <p>
+                  {item.brand}
+                </p>
 
-</>
+                <div className="price-row">
 
-);
+                  <span className="new-price">
+                    ₹{item.price}
+                  </span>
+
+                  <del>
+                    ₹{item.oldPrice}
+                  </del>
+
+                  <span className="discount">
+                    -{item.discount}%
+                  </span>
+
+                </div>
+
+                <button
+                  onClick={() => addToCart(item)}
+                >
+                  Add To Cart
+                </button>
+
+              </div>
+
+            ))
+
+          }
+
+        </div>
+
+      </section>
+
+      <Footer />
+
+    </>
+
+  );
 
 }
 

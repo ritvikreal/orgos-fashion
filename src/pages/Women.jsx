@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -9,10 +9,15 @@ import "../styles/women.css";
 
 import womenProducts from "../data/womenProducts";
 
+import { CartContext } from "../context/CartContext";
+
 function Women() {
 
   const [selectedCategory, setSelectedCategory] =
     useState("all");
+
+  const { addToCart } =
+    useContext(CartContext);
 
   let products = [];
 
@@ -20,7 +25,9 @@ function Women() {
 
     products = Object.values(womenProducts).flat();
 
-  } else {
+  }
+
+  else {
 
     products = womenProducts[selectedCategory] || [];
 
@@ -32,19 +39,19 @@ function Women() {
 
       <Navbar />
 
-      {/* HERO SECTION */}
+      {/* HERO */}
 
-   <section className="women-hero">
+      <section className="women-hero">
 
-  <img
-    src={hero}
-    alt="Women's Collection"
-    className="women-banner"
-  />
+        <img
+          src={hero}
+          alt="Women's Collection"
+          className="women-banner"
+        />
 
-</section>
+      </section>
 
-      {/* CATEGORYS */}
+      {/* CATEGORY */}
 
       <section className="category-section">
 
@@ -54,9 +61,7 @@ function Women() {
               ? "category active"
               : "category"
           }
-          onClick={() =>
-            setSelectedCategory("all")
-          }
+          onClick={() => setSelectedCategory("all")}
         >
           All
         </div>
@@ -67,9 +72,7 @@ function Women() {
               ? "category active"
               : "category"
           }
-          onClick={() =>
-            setSelectedCategory("dresses")
-          }
+          onClick={() => setSelectedCategory("dresses")}
         >
           Dresses
         </div>
@@ -80,9 +83,7 @@ function Women() {
               ? "category active"
               : "category"
           }
-          onClick={() =>
-            setSelectedCategory("bottomwear")
-          }
+          onClick={() => setSelectedCategory("bottomwear")}
         >
           Bottom Wear
         </div>
@@ -93,9 +94,7 @@ function Women() {
               ? "category active"
               : "category"
           }
-          onClick={() =>
-            setSelectedCategory("coord")
-          }
+          onClick={() => setSelectedCategory("coord")}
         >
           Co-Ord Sets
         </div>
@@ -106,9 +105,7 @@ function Women() {
               ? "category active"
               : "category"
           }
-          onClick={() =>
-            setSelectedCategory("outerwear")
-          }
+          onClick={() => setSelectedCategory("outerwear")}
         >
           Outerwear
         </div>
@@ -119,9 +116,7 @@ function Women() {
               ? "category active"
               : "category"
           }
-          onClick={() =>
-            setSelectedCategory("ethnic")
-          }
+          onClick={() => setSelectedCategory("ethnic")}
         >
           Ethnic Wear
         </div>
@@ -132,9 +127,7 @@ function Women() {
               ? "category active"
               : "category"
           }
-          onClick={() =>
-            setSelectedCategory("tops")
-          }
+          onClick={() => setSelectedCategory("tops")}
         >
           Tops & T-Shirts
         </div>
@@ -147,53 +140,66 @@ function Women() {
 
         <div className="products-grid">
 
-          {products.map((item) => (
+          {
 
-            <div
-              className="product-card"
-              key={item.id}
-            >
+            products.map((item) => (
 
-              <img
-                src={item.image}
-                alt={item.name}
-              />
+              <div
+                className="product-card"
+                key={item.id}
+              >
 
-              <h3>
-                {item.name}
-              </h3>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                />
 
-              <p className="brand">
-                Eyestyle Bombay
-              </p>
+                <h3>{item.name}</h3>
 
-              <div className="rating">
-                ⭐ {item.rating}
+                <p className="brand">
+                  Eyestyle Bombay
+                </p>
+
+                <div className="rating">
+                  ⭐ {item.rating}
+                </div>
+
+                <div className="price-row">
+
+                  <span className="new-price">
+                    ₹{item.price}
+                  </span>
+
+                  <del>
+                    ₹{item.oldPrice}
+                  </del>
+
+                  <span className="discount">
+                    -38%
+                  </span>
+
+                </div>
+
+              <button
+  className="cart-btn"
+  onClick={() => {
+
+    console.log("Clicked");
+
+    console.log(item);
+
+    addToCart(item);
+
+  }}
+>
+  Add To Cart
+</button>
+
               </div>
 
-              <div className="price-row">
+            ))
 
-                <span className="new-price">
-                  ₹{item.price}
-                </span>
-
-                <del>
-                  ₹{item.oldPrice}
-                </del>
-
-                <span className="discount">
-                  -38%
-                </span>
-
-              </div>
-
-              <button className="cart-btn">
-                Add To Cart
-              </button>
-
-            </div>
-
-          ))}
+          }
 
         </div>
 
@@ -204,6 +210,7 @@ function Women() {
     </>
 
   );
+
 }
 
 export default Women;

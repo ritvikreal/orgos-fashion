@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -9,10 +9,14 @@ import menProducts from "../data/menProducts";
 
 import hero from "../assets/images/men/hero.jpg";
 
+import { CartContext } from "../context/CartContext";
+
 function Men() {
 
   const [selectedCategory, setSelectedCategory] =
     useState("all");
+
+  const { addToCart } = useContext(CartContext);
 
   let products = [];
 
@@ -26,86 +30,58 @@ function Men() {
     <>
       <Navbar />
 
-      {/* HERO IMAGE */}
-
       <section className="men-hero">
-
         <img
           src={hero}
           alt="Men Collection"
           className="hero-banner"
         />
-
       </section>
-
-      {/* CATEGORYS */}
 
       <section className="men-categories">
 
         <div
-          className={
-            selectedCategory === "all"
-              ? "cat active"
-              : "cat"
-          }
-          onClick={() => setSelectedCategory("all")}
+          className={selectedCategory==="all" ? "cat active":"cat"}
+          onClick={()=>setSelectedCategory("all")}
         >
           All
         </div>
 
         <div
-          className={
-            selectedCategory === "formal"
-              ? "cat active"
-              : "cat"
-          }
-          onClick={() => setSelectedCategory("formal")}
+          className={selectedCategory==="formal" ? "cat active":"cat"}
+          onClick={()=>setSelectedCategory("formal")}
         >
           Formal Wear
         </div>
 
         <div
-          className={
-            selectedCategory === "activewear"
-              ? "cat active"
-              : "cat"
-          }
-          onClick={() => setSelectedCategory("activewear")}
+          className={selectedCategory==="activewear" ? "cat active":"cat"}
+          onClick={()=>setSelectedCategory("activewear")}
         >
           Activewear
         </div>
 
         <div
-          className={
-            selectedCategory === "premium"
-              ? "cat active"
-              : "cat"
-          }
-          onClick={() => setSelectedCategory("premium")}
+          className={selectedCategory==="premium" ? "cat active":"cat"}
+          onClick={()=>setSelectedCategory("premium")}
         >
           Premium
         </div>
 
         <div
-          className={
-            selectedCategory === "party"
-              ? "cat active"
-              : "cat"
-          }
-          onClick={() => setSelectedCategory("party")}
+          className={selectedCategory==="party" ? "cat active":"cat"}
+          onClick={()=>setSelectedCategory("party")}
         >
           Party Wear
         </div>
 
       </section>
 
-      {/* PRODUCTS */}
-
       <section className="men-products">
 
         <div className="products-grid">
 
-          {products.map((item) => (
+          {products.map((item)=>(
 
             <div
               className="product-card"
@@ -127,7 +103,12 @@ function Men() {
                 ₹{item.price}
               </span>
 
-              <button>
+              <button
+                onClick={()=>{
+                  addToCart(item);
+                  alert("Product Added Successfully");
+                }}
+              >
                 Add To Cart
               </button>
 
