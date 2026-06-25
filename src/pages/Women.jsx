@@ -3,6 +3,8 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
+import hero from "../assets/images/women/hero.jpg";
+
 import "../styles/women.css";
 
 import womenProducts from "../data/womenProducts";
@@ -32,41 +34,15 @@ function Women() {
 
       {/* HERO SECTION */}
 
-      <section className="women-hero">
+   <section className="women-hero">
 
-        <div className="women-hero-left">
+  <img
+    src={hero}
+    alt="Women's Collection"
+    className="women-banner"
+  />
 
-          <p className="arrival">
-            NEW ARRIVALS
-          </p>
-
-          <h1>
-            WOMAN'S
-            <br />
-            COLLECTION
-          </h1>
-
-          <h3>
-            POWER. ELEGANCE.
-            UNAPOLOGETICALLY YOU.
-          </h3>
-
-          <p className="hero-desc">
-            Designed for the woman
-            who leads, inspires,
-            and owns every moment.
-          </p>
-
-          <button>
-            SHOP NOW
-          </button>
-
-        </div>
-
-        <div className="women-hero-right">
-        </div>
-
-      </section>
+</section>
 
       {/* CATEGORYS */}
 
