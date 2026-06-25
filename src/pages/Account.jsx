@@ -1,0 +1,107 @@
+import "../styles/account.css";
+
+import loginBanner from "../assets/images/login-banner.png";
+
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+function Account() {
+
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [checked, setChecked] = useState(false);
+
+  const handleContinue = () => {
+
+    if (name.trim() === "") {
+      alert("Please Enter Your Name");
+      return;
+    }
+
+    if (mobile.length !== 10) {
+      alert("Enter Valid Mobile Number");
+      return;
+    }
+
+    if (!checked) {
+      alert("Please Accept Terms & Conditions");
+      return;
+    }
+
+    localStorage.setItem("name", name);
+    localStorage.setItem("mobile", mobile);
+
+    navigate("/otp");
+  };
+
+  return (
+
+    <div className="account-page">
+
+      <div className="login-box">
+
+        <img
+          src={loginBanner}
+          alt=""
+          className="login-banner"
+        />
+
+        <div className="login-content">
+
+          <h2>
+            Login or Sign Up
+          </h2>
+
+          <input
+            type="text"
+            placeholder="Enter Your Name"
+            value={name}
+            onChange={(e) =>
+              setName(e.target.value)
+            }
+          />
+
+          <input
+            type="text"
+            placeholder="Enter Mobile Number"
+            value={mobile}
+            onChange={(e) =>
+              setMobile(e.target.value)
+            }
+          />
+
+          <div className="checkbox-area">
+
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={(e) =>
+                setChecked(e.target.checked)
+              }
+            />
+
+            <p>
+              By continuing, I agree to the
+              <span> Terms of Use </span>
+              &
+              <span> Privacy Policy </span>
+            </p>
+
+          </div>
+
+          <button onClick={handleContinue}>
+            CONTINUE
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  );
+}
+
+export default Account;
